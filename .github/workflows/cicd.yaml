@@ -12,7 +12,7 @@ jobs:
 
     steps:
 
-      - name: Shorten-Commit ID
+      - name: Shorten Commit ID
         shell: bash
         run:
            echo "COMMIT_ID=${GITHUB_SHA::6}" >> "$GITHUB_ENV"           
@@ -38,8 +38,8 @@ jobs:
         run: 
            curl -ksSL -o https://argocd-server.argocd/download/argocd-linux-amd64
            chmod +x argocd
-           mv ./argocd /usr/local/bin/argocd
-           
+           sudo mv ./argocd /usr/local/bin/argocd
+
       - name: Argocd app sync
         shell: bash
         run:
