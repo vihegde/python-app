@@ -10,7 +10,7 @@ def details():
         'message':'Hello World',
         'time': datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"),
         'hostname':socket.gethostname(),
-        'message':'You are doing g8-!!!!-----> :)'
+        'message':'You are doing g8-!!!!--..---> :)'
     })
 
 
