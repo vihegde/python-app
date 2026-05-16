@@ -8,6 +8,7 @@ on:
      - main
 jobs:
   ci:
+    
     runs-on: ubuntu-latest
 
     steps:
@@ -28,10 +29,24 @@ jobs:
         with:
           push: true
           tags: vihegde23021985/python-app:${{ env.COMMIT_ID }}
+    outputs:
+        commit_id: ${{ env.COMMIT_ID }}
   cd:
     needs: ci
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v3
+      - name: "Modify values fullnameOverride"
+        shell: bash
+        run:
+          echo ${{needs.ci.outputs.commit_id}}
+          pip install yq
+          yq -Yi '.image.tag= "${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Updates the values commit ID to tags ${{needs.ci.outputs.commit_id}}'
+
 
       - name: Install-ArgoCD
         shell: bash
