@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: vihegde23021985/python-app
   pullPolicy: IfNotPresent
-  tag: a59a0c
+  tag: '903687'
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
