@@ -17,8 +17,8 @@ def details():
 @app.route('/api/v1/healthz')
 def health():
     return jsonify ({
-        'status':'UpP'
-    })
+        'status':'Up'
+    }), 200
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
 
